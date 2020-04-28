@@ -11,6 +11,7 @@ def model1(theta, t, fix_params):
     r = theta[0]
     p = theta[1]
     C_0 = fix_params[0]
+
     # if r < 1.e-5:
     #     r = 0.
     
@@ -22,7 +23,7 @@ def model1(theta, t, fix_params):
     m = 1. / (1. - p)
     cm = C_0 ** 1./m
         
-    C = []
+    # C = []
     # for i in range(len(t)):
     #     if p < 1.e-5:
     #         C.append(r * t[i] + C_0)
@@ -68,7 +69,7 @@ def model3(theta, t, fix_params):
     #     else:
     #         e_arg = 1. - 1. / a1
     #         C.append(a * np.exp(b * e_arg) + C_0)
-    a1 = 1. - np.power(1. - t/T, p)
+    a1 = 1. - (1. - t/T) ** p
     e_arg = 1. - 1. / a1
     C = a * np.exp(b * e_arg) + C_0
             
